@@ -154,12 +154,12 @@ fi
 %files
 %license COPYING
 %doc plugin/Feature.mediawiki
-%{_sysconfdir}/ipa/fleetcommander.conf
 %_datadir/ipa/schema.d/*
 %_datadir/ipa/updates/*
 #_datadir/ipa/ui/js/plugins/deskprofile/*
 
 %files -n python2-ipa-%{plugin_name}-client
+%{_sysconfdir}/ipa/fleetcommander.conf
 %ipa_python2_sitelib/ipaclient/plugins/*
 
 %files -n python2-ipa-%{plugin_name}-server
@@ -167,6 +167,7 @@ fi
 
 %if 0%{?fedora} > 26 || 0%{?rhel} > 7
 %files -n python3-ipa-%{plugin_name}-client
+%{_sysconfdir}/ipa/fleetcommander.conf
 %ipa_python3_sitelib/ipaclient/plugins/*
 
 %files -n python3-ipa-%{plugin_name}-server
@@ -174,6 +175,9 @@ fi
 %endif
 
 %changelog
+* Thu Nov 23 2017 Oliver Gutierrez <ogutierrez@redhat.com> 0.0.6-3
+- Moved context configuration file to client package
+
 * Mon Nov 20 2017 Oliver Gutierrez <ogutierrez@redhat.com> 0.0.6-2
 - Fixed errors in specfile
 
